@@ -32,7 +32,8 @@
     <p class="sub">Predict if a Telangana-registered vehicle is electric based on its attributes.</p>
 
     <label>Manufacturer name</label>
-    <input type="text" id="maker" placeholder="e.g. OLA ELECTRIC TECHNOLOGIES PVT LTD" />
+<input type="text" id="maker" list="makers-list" placeholder="Start typing manufacturer name..." />
+<datalist id="makers-list"></datalist>
 
     <label>Body type</label>
     <select id="body">
@@ -123,6 +124,21 @@
         document.getElementById('result-message').textContent = e.message;
       }
     }
+
+
+    // Fetch unique makers for datalist
+    async function loadMakers() {
+  const res = await fetch('/makers');
+  const data = await res.json();
+  const datalist = document.getElementById('makers-list');
+  data.makers.forEach(m => {
+    const option = document.createElement('option');
+    option.value = m;
+    datalist.appendChild(option);
+  });
+}
+loadMakers();
+
   </script>
 </body>
 </html>
