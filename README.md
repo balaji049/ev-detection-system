@@ -123,4 +123,4 @@ EV adoption in Telangana by year:
 
 Built by a fresher who actually opened the data instead of just planning to.
 
-**Live demo:** https://your-render-url.onrender.com/ui
+**Live demo:** https://ev-detection-system-dneb.onrender.com/ui
