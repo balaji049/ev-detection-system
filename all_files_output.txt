@@ -1,0 +1,30 @@
+Found 8 files
+Loaded: data\Registration_updated.csv - 1048575 rows
+Loaded: data\ts_transport_registration_01_01_2023to31_01_2023.csv - 314976 rows
+Loaded: data\ts_transport_registration_01_01_2025to31_01_2025.csv - 343137 rows
+Loaded: data\ts_transport_registration_01_01_2026to31_01_2026.csv - 176885 rows
+Loaded: data\ts_transport_registration_01_02_2026to28_02_2026.csv - 169057 rows
+Loaded: data\ts_transport_registration_01_06_2025to30_06_2025.csv - 319160 rows
+Loaded: data\ts_transport_registration_01_12_2023to31_12_2023.csv - 343209 rows
+Loaded: data\ts_transport_registration_01_12_2025to31_12_2025.csv - 175307 rows
+
+Total rows: 2890306
+
+Fuel_Clean counts:
+Fuel_Clean
+NAN                1846043
+PETROL              742287
+DIESEL              255590
+PETROL LPG           37619
+CNG PETROL            4327
+UNKNOWN               2293
+LPG                   1156
+DIESEL ELECTRIC        546
+CNG                    215
+ELECTRIC               167
+SOLAR                   40
+DIESEL LPG              17
+CNG DIESEL               6
+Name: count, dtype: int64
+
+Total ELECTRIC vehicles across all files: 167

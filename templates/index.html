@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EV Classifier — Telangana</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; background: #f4f4f4; display: flex; justify-content: center; padding: 40px 16px; }
+    .card { background: white; border-radius: 12px; padding: 32px; width: 100%; max-width: 480px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    h1 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+    p.sub { font-size: 13px; color: #666; margin-bottom: 24px; }
+    label { font-size: 13px; font-weight: 500; display: block; margin-bottom: 6px; color: #333; }
+    input, select { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; margin-bottom: 16px; outline: none; }
+    input:focus, select:focus { border-color: #4f46e5; }
+    button { width: 100%; padding: 12px; background: #4f46e5; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer; }
+    button:hover { background: #4338ca; }
+    .result { margin-top: 24px; padding: 16px; border-radius: 8px; text-align: center; display: none; }
+    .electric { background: #ecfdf5; border: 1px solid #6ee7b7; }
+    .not-electric { background: #fff7ed; border: 1px solid #fdba74; }
+    .result h2 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+    .result p { font-size: 13px; color: #555; }
+    .confidence { font-size: 28px; font-weight: 700; margin: 8px 0; }
+    .electric .confidence { color: #059669; }
+    .not-electric .confidence { font-size: 28px; color: #ea580c; }
+    .error { background: #fef2f2; border: 1px solid #fca5a5; color: #b91c1c; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>EV Vehicle Classifier</h1>
+    <p class="sub">Predict if a Telangana-registered vehicle is electric based on its attributes.</p>
+
+    <label>Manufacturer name</label>
+    <input type="text" id="maker" placeholder="e.g. OLA ELECTRIC TECHNOLOGIES PVT LTD" />
+
+    <label>Body type</label>
+    <select id="body">
+      <option value="">Select body type</option>
+      <option>Solo</option>
+      <option>Sedan</option>
+      <option>HATCHBACK</option>
+      <option>SUV</option>
+      <option>SCOOTER</option>
+      <option>Open</option>
+      <option>Saloon</option>
+      <option>Monocoque</option>
+      <option>TIPPER</option>
+      <option>Van</option>
+    </select>
+
+    <label>Engine capacity (CC) — enter 0 for electric</label>
+    <input type="number" id="cc" placeholder="e.g. 125" min="0" />
+
+    <label>RTA Office</label>
+    <select id="office">
+      <option value="">Select office</option>
+      <option>RTA UPPAL</option>
+      <option>RTA IBRAHIMPATNAM</option>
+      <option>RTA RANGAREDDY</option>
+      <option>RTA MEDCHAL</option>
+      <option>UNIT OFFICE KUKATPALLY</option>
+      <option>RTA-HYDERABAD-CZ</option>
+      <option>RTA-HYDERABAD-NZ</option>
+      <option>RTA-HYDERABAD-EZ</option>
+      <option>RTA-HYDERABAD-WZ</option>
+      <option>RTA-HYDERABAD-SZ</option>
+    </select>
+
+    <button onclick="predict()">Predict</button>
+
+    <div class="result" id="result">
+      <h2 id="result-title"></h2>
+      <div class="confidence" id="result-confidence"></div>
+      <p id="result-message"></p>
+    </div>
+  </div>
+
+  <script>
+    async function predict() {
+      const maker = document.getElementById('maker').value.trim();
+      const body = document.getElementById('body').value;
+      const cc = parseFloat(document.getElementById('cc').value);
+      const office = document.getElementById('office').value;
+
+      const resultDiv = document.getElementById('result');
+      resultDiv.className = 'result';
+      resultDiv.style.display = 'none';
+
+      if (!maker || !body || isNaN(cc) || !office) {
+        resultDiv.style.display = 'block';
+        resultDiv.className = 'result error';
+        document.getElementById('result-title').textContent = 'Please fill all fields';
+        document.getElementById('result-confidence').textContent = '';
+        document.getElementById('result-message').textContent = '';
+        return;
+      }
+
+      try {
+        const res = await fetch('/predict', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ maker_name: maker, body_type: body, cc, office })
+        });
+        const data = await res.json();
+
+        resultDiv.style.display = 'block';
+        if (data.message.startsWith('Unknown')) {
+          resultDiv.className = 'result error';
+          document.getElementById('result-title').textContent = 'Unknown input value';
+          document.getElementById('result-confidence').textContent = '';
+          document.getElementById('result-message').textContent = data.message;
+        } else {
+          resultDiv.className = 'result ' + (data.is_electric ? 'electric' : 'not-electric');
+          document.getElementById('result-title').textContent = data.is_electric ? 'Electric Vehicle' : 'Non-Electric Vehicle';
+          document.getElementById('result-confidence').textContent = (data.confidence * 100).toFixed(1) + '%';
+          document.getElementById('result-message').textContent = 'Model confidence score';
+        }
+      } catch (e) {
+        resultDiv.style.display = 'block';
+        resultDiv.className = 'result error';
+        document.getElementById('result-title').textContent = 'API error';
+        document.getElementById('result-message').textContent = e.message;
+      }
+    }
+  </script>
+</body>
+</html>

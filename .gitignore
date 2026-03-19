@@ -1,0 +1,25 @@
+# Data files - too large for GitHub
+data/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# VS Code
+.vscode/
+
+# Model files - optional, can be regenerated
+# model/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

@@ -1,0 +1,67 @@
+d:\Projects\ml_project\read.py:68: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df['Regn_VFDt'] = pd.to_datetime(df['Regn_VFDt'], errors='coerce')
+Found 8 files
+
+Loaded: data\Registration_updated.csv - 1048575 rows
+Loaded: data\ts_transport_registration_01_01_2023to31_01_2023.csv - 314976 rows
+Loaded: data\ts_transport_registration_01_01_2025to31_01_2025.csv - 343137 rows
+Loaded: data\ts_transport_registration_01_01_2026to31_01_2026.csv - 176885 rows
+Loaded: data\ts_transport_registration_01_02_2026to28_02_2026.csv - 169057 rows
+Loaded: data\ts_transport_registration_01_06_2025to30_06_2025.csv - 319160 rows
+Loaded: data\ts_transport_registration_01_12_2023to31_12_2023.csv - 343209 rows
+Loaded: data\ts_transport_registration_01_12_2025to31_12_2025.csv - 175307 rows
+
+Total rows: 2890306
+
+Fuel_Clean counts:
+Fuel_Clean
+PETROL             1982938
+DIESEL              694138
+ELECTRIC             73187
+PETROL LPG           62630
+CNG PETROL           40055
+NAN                  26423
+UNKNOWN               4292
+CNG                   2600
+LPG                   1531
+DIESEL ELECTRIC       1511
+PETROL ELECTRIC        852
+0                       70
+SOLAR                   40
+DIESEL LPG              29
+CNG DIESEL              10
+Name: count, dtype: int64
+
+Total ELECTRIC vehicles across all files: 73187
+
+EV by year:
+Year
+2018.0    0.017
+2019.0    0.049
+2020.0    0.068
+2021.0    0.544
+2022.0    2.289
+2023.0    5.235
+2024.0    4.506
+2025.0    7.687
+2026.0    8.660
+dtype: float64
+Electric: 72860, Non-electric: 2508159
+
+Model results:
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00    501632
+           1       0.98      1.00      0.99     14572
+
+    accuracy                           1.00    516204
+   macro avg       0.99      1.00      1.00    516204
+weighted avg       1.00      1.00      1.00    516204
+
+
+Feature importance:
+CC          0.846451
+Maker       0.115324
+BodyType    0.036261
+Office      0.001965
+dtype: float64

@@ -1,0 +1,178 @@
+d:\Projects\ml_project\read.py:51: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df['Regn_VFDt'] = pd.to_datetime(df['Regn_VFDt'], errors='coerce')
+Loaded using encoding: cp1252
+Index(['Regn_No', 'Regn_VFDt', 'Regn_VTDt', 'Maker_Name', 'Model_Desc',
+       'BodyTyp', 'CC', 'Cylinder', 'Fuel', 'HP', 'Seat_Capacity',
+       'Apprved_Dt', 'OfficeCd'],
+      dtype='object')
+Fuel
+PETROL              742286
+DIESEL              255584
+PETROL LPG           37592
+CNG PETROL            4326
+-1                    2293
+LPG                   1156
+DIESEL ELECTRIC        546
+CNG                    215
+BATTERY                155
+SOLAR                   40
+DIESEL LPG              17
+BATTERY OPERATED        12
+PETROL/LPG              10
+PL                       9
+LPG PETROL               6
+CNG DIESEL               6
+diesel                   5
+LPG  PETROL              1
+lpg petrol               1
+petrol                   1
+PETROL CNG               1
+DIESEL                   1
+Name: count, dtype: int64
+Fuel_Clean
+PETROL             742287
+DIESEL             255590
+PETROL LPG          37619
+CNG PETROL           4327
+UNKNOWN              2293
+LPG                  1156
+DIESEL ELECTRIC       546
+CNG                   215
+ELECTRIC              167
+SOLAR                  40
+DIESEL LPG             17
+CNG DIESEL              6
+Name: count, dtype: Int64
+Year
+1999.0     1
+2001.0     1
+2002.0     2
+2004.0     1
+2005.0     1
+2007.0     3
+2008.0     4
+2009.0    19
+2010.0    63
+2011.0    37
+2017.0     3
+2018.0    31
+2068.0     1
+dtype: int64
+Year
+1753.0     2
+1976.0    63
+1977.0    65
+1978.0    64
+1979.0    74
+          ..
+2071.0    39
+2072.0    36
+2073.0    47
+2074.0    59
+2075.0    65
+Length: 83, dtype: int64
+
+EV registrations by year:
+Year
+2010.0    63
+2011.0    37
+2017.0     3
+2018.0    31
+dtype: int64
+
+Total registrations by year:
+Year
+2010.0    221901
+2011.0    284340
+2012.0      4865
+2013.0      1097
+2014.0       398
+2015.0       361
+2016.0       373
+2017.0     18584
+2018.0    179952
+2019.0         1
+2021.0        14
+dtype: int64
+
+EV share % by year:
+Year
+2010.0    0.028
+2011.0    0.013
+2012.0      NaN
+2013.0      NaN
+2014.0      NaN
+2015.0      NaN
+2016.0      NaN
+2017.0    0.016
+2018.0    0.017
+2019.0      NaN
+2021.0      NaN
+dtype: float64
+Total rows: 711886
+
+Top 10 vehicle makers:
+Maker_Name
+HONDA MOTORCYCLE&SCOOTER(I)P L    150242
+HERO HONDA MOTORS LTD,            134720
+BAJAJ AUTO LTD                     81840
+TVS MOTOR COMPANY LTD              64785
+HERO MOTOCORP LTD                  49481
+MARUTI SUZUKI INDIA LTD.,          48107
+HYUNDAI MOTOR INDIA LTD            22223
+TATA MOTORS LTD                    19312
+SUZUKI MOTORCYCLE (I) PVT LTD      18172
+INDIA YAMAHA MOTOR PVT LTD         15671
+Name: count, dtype: int64
+
+Body types:
+BodyTyp
+Solo         511878
+Sedan         96806
+Open          42249
+Saloon        23295
+Monocoque     13751
+Hackney        8407
+Closed         3837
+HATCHBACK      3331
+Hard Top       2480
+TIPPER         1643
+Name: count, dtype: int64
+
+Office/District codes:
+OfficeCd
+RTA UPPAL                 67947
+RTA IBRAHIMPATNAM         60633
+RTA RANGAREDDY            57698
+RTA MEDCHAL               50532
+UNIT OFFICE KUKATPALLY    33985
+RTA-HYDERABAD-CZ          32844
+RTA-HYDERABAD-NZ          19929
+RTA-HYDERABAD-EZ          18168
+RTA-HYDERABAD-WZ          15547
+RTA-HYDERABAD-SZ          12723
+Name: count, dtype: int64
+
+Engine CC stats:
+count    711885.000000
+mean        518.129653
+std         973.723562
+min           0.000000
+25%         100.000000
+50%         125.000000
+75%         436.000000
+max       21600.000000
+Name: CC, dtype: float64
+Electric vehicles: 71
+Non-electric: 527767
+
+Model results:
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00    105554
+           1       1.00      0.86      0.92        14
+
+    accuracy                           1.00    105568
+   macro avg       1.00      0.93      0.96    105568
+weighted avg       1.00      1.00      1.00    105568
+
