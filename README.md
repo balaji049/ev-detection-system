@@ -1,5 +1,6 @@
 # EV Detection System
-
+[![Dataset Size](https://img.shields.io/badge/Data-2.8M%20Records-blue)]()
+[![EV Growth](https://img.shields.io/badge/EV%20Growth-500x-green)]()
 > Machine learning classifier trained on 2.8 million real vehicle registration records from the Telangana government. Discovered EV adoption in Hyderabad grew from **0.017% to 8.66%** between 2018 and 2026.
 
 [![Python](https://img.shields.io/badge/Python-3.10-blue?style=flat-square)](https://python.org)
