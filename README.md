@@ -11,6 +11,17 @@
 **[Live Demo](https://ev-detection-system-dneb.onrender.com/ui)** | **[Dataset](https://data.telangana.gov.in)** | **[LinkedIn](https://linkedin.com/in/balaji-bhairwad)**
 
 ---
+## Screenshots
+
+**Prediction form with real manufacturer data from 2.8M records:**
+
+![EV Detection prediction form]
+<img width="1905" height="980" alt="Image" src="https://github.com/user-attachments/assets/e8ffc6f2-e0fb-489b-98b0-a639a953384b" />
+
+**Live result with model confidence score:**
+
+![EV Detection result]
+<img width="577" height="800" alt="Image" src="https://github.com/user-attachments/assets/e2dfaf27-e193-4367-ae59-a494a688948b" />
 
 ## What this project does
 
